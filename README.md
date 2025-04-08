@@ -1,4 +1,4 @@
-For 20Newsgroup task
+For 20Newsgroups task
 
 FastDAM：
 First run the run-svm-s.py to get the basic classifier, where s is the setting, you can change for different dataset like sci vs comp
