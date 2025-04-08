@@ -1,0 +1,44 @@
+import os
+import numpy as np
+from scipy.io import loadmat
+import ast
+
+def show_result_univer_dam(virtual_label_type):
+    
+    result_dir = 'results'
+    print("N\tMAP\tSTD")  
+    
+    N_set = [20] 
+    for N in N_set:
+       
+        result_file = os.path.join(result_dir, 'univerdam', f'result_main_univerdam_m_{virtual_label_type}.txt')
+        
+        data = {}
+        with open(result_file, 'r') as f:
+            for line in f:
+                line = line.strip() 
+                if line:  
+                    key, value = line.split(": ", 1)  
+                    data[key] = ast.literal_eval(value)  
+            
+        result = data['result']
+        
+        ap_values = []
+        for ap in result.values():
+            ap_value = ap['ap']
+            ap_values.append(ap_value)
+            
+        mean_ap = np.mean(ap_values)
+        std_ap = np.std(ap_values, ddof=1)
+            
+        print(f"{N}\t{mean_ap:.4f}\t{std_ap:.4f}")
+        
+        acc_values = []
+        for acc in result.values():
+            acc_value = acc['acc']
+            acc_values.append(acc_value)
+            
+        print("\nN\tACC\tSTD")
+        mean_acc = np.mean(acc_values)
+        std_acc = np.std(acc_values, ddof=1)
+        print(f"{N}\t{mean_acc:.4f}\t{std_acc:.4f}")
