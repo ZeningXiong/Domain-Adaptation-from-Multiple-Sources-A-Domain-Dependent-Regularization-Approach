@@ -1,0 +1,22 @@
+Descriptions:
+-------------------------
+
+
++ src_data.mat
+
+    source domain data
+
+
++ tar_data.mat
+    
+    target domain data
+
+
+
++ tar_ind
+    
+    the index of the target domain labeled data are obtained from the files in this folder. However there are only 20 items in each file.
+
++ tar_ind
+
+    the index of the target domain labeled data are obtained from the files in this folder.
